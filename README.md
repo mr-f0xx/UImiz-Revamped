@@ -1,7 +1,7 @@
 <h1 align="center">UImiz Revamped</h1>
 
 <p align="center">
-  A dark purple Rockbox theme for the <b>HIDIZS AP80 Pro Max</b> (360 × 640, touchscreen)<br>
+  A revamped dark purple Rockbox theme version for the <b>HIDIZS AP80 Pro Max</b> (360 × 640, touchscreen)<br>
   based on <a href="https://github.com/jgoedde/hiby-r1-rockbox-jgulmiz">JGUlmiz</a> by jgoedde and the original <b>Ulmiz</b> by Simon Rothen.
 </p>
 
@@ -74,16 +74,6 @@ Notes:
 - The visualizer is only on Now Playing. In menus Rockbox redraws the status bar only about once a second, which is too slow for a smooth animation.
 - Rockbox themes can read only the left and right peak levels, so the five bars alternate between the two channels. It is not a real frequency spectrum.
 - Both skins pass Rockbox's `checkwps` built for the `hidizsap80max` target.
-
-## Customising
-
-The `tools/` folder holds the Python scripts that generate the theme:
-
-- `design.py` sets the layout, the colours (`ACCENT`, the palette) and draws every bitmap.
-- `make.py` writes the `.wps`, `.sbs` and `.cfg` files and copies the fonts.
-- `preview.py` renders the preview images.
-
-They need Python 3, Pillow and numpy. They still contain the absolute paths of the machine the theme was built on, so change those before running them.
 
 ## Credits
 
