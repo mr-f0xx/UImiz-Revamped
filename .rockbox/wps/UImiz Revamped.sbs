@@ -1,0 +1,92 @@
+# Rockbox Theme Name: UImiz Revamped (HIDIZS AP80 Pro Max)
+# Platform: HIDIZS AP80 Pro Max (360x640)
+# Based on JGUlmiz for the HiBy R1 by jgoedde, and Ulmiz by Simon Rothen (rothen@gmx.net)
+# Licencing: CC-BY-SA 3.0
+# iconset taken from advaitapod theme vector files
+#
+# Version: 2.0-ap80pm
+# Date: 2026-10-01
+#
+# SBS File
+#
+# Additional Fonts
+%Fl(3,34-Ubuntu-Medium.fnt)
+%Fl(4,38-Ubuntu-Medium.fnt)
+%Fl(8,27-Ubuntu-Regular.fnt)
+%Fl(5,16-Ubuntu-Medium.fnt)
+%Fl(9,56-Ubuntu-Medium.fnt)
+%Fl(10,20-Ubuntu-Medium.fnt)
+#
+%X(sbs_bg.bmp)
+#
+# USB screen (activity 21): own layout, hide the menu title, park the built-in USB logo in a 1px UI viewport
+%?if(%cs,=,21)<%VI(usbvi)|%VI(menu)>
+%?if(%cs,=,21)<%Vd(usb)|%Vd(title)>
+#
+# Cancel
+%V(38,574,60,45,-)
+%T(cancel,0,0,-,-,cancel)
+%T(cancel,0,0,-,-,menu,long_press)
+#
+# Resume (Go to WPS)
+%V(263,574,60,45,-)
+%T(0,0,-,-,resumeplayback)
+#
+### VIEWPORTS
+## Vi AREA (MENU)  7 lines x 66px (33px font + 33 padding)
+%Vi(menu,15,98,334,465,1)
+%Vi(usbvi,359,639,1,1,-)
+#
+### USB SCREEN
+%xl(U,usb_screen.bmp,0,0)
+%xl(f,batt_fill.bmp,0,0)
+%xl(g,batt_track.bmp,0,0)
+%Vl(usb,0,42,-,-,-)
+%xd(U)
+# battery percentage (big)
+%Vl(usb,34,354,150,53,9)%Vf(f6f1fb)
+%al%bl%%
+# charging state
+%Vl(usb,170,362,156,20,10)%Vf(c58ee6)
+%ar%?bc<Charging|%?bp<Fully charged|On battery>>
+# voltage
+%Vl(usb,170,386,156,20,10)%Vf(9d8fb0)
+%ar%bv V
+# battery bar
+%Vl(usb,34,424,292,14,-)%Vf(c58ee6)
+%bl(0,0,292,14,image,f,backdrop,g)
+# charger / runtime rows
+%Vl(usb,176,493,150,20,10)%Vf(ddd3e8)
+%ar%?bp<Connected|Not connected>
+%Vl(usb,176,525,150,20,10)%Vf(ddd3e8)
+%ar%bt
+#
+#
+# Clock  (left, 12 px from the edge like the battery on the right)
+%V(11,8,120,27,8)%Vf(ddd3e8)
+%al%?cf<%ck:%cM|%cl:%cM %cp>
+%V(120,0,120,42,-)
+%T(0,0,-,-,quickscreen)
+#
+# Battery  (percentage moves left and a purple bolt appears while the charger is connected)
+%?bp<%Vd(bchg)|%Vd(bnorm)>
+%Vl(bnorm,254,8,78,26,8)%Vf(ddd3e8)
+%ar%bl%%
+%Vl(bchg,240,8,78,26,8)%Vf(ddd3e8)
+%ar%bl%%
+%xl(z,bolt.bmp,0,0)
+%Vl(bchg,322,12,10,18,-)%Vf(c58ee6)
+%xd(z)
+# battery level: pastel purple fill inside the white outline (outline is in the backdrop)
+%xl(bf,batt_level.bmp,0,0)
+%xl(be,batt_empty.bmp,0,0)
+%V(340,16,6,14,-)
+%bl(0,0,6,14,vertical,image,bf,backdrop,be)
+#
+# Title
+%xl(t,title_icons.bmp,0,0,32)
+%Vl(title,5,61,30,38,-)%Vf(c58ee6)
+%?Li<|%xd(ta)|%xd(tb)|%xd(tc)|%xd(td)|%xd(te)|%xd(tf)|%xd(tg)|%xd(th)|%xd(ti)|%xd(tj)|%xd(tk)|%xd(tl)|%xd(tm)|%xd(tn)|%xd(to)|%xd(tp)|%xd(tq)|%xd(tr)|%xd(ts)|%xd(tt)|%xd(tu)|%xd(tv)|%xd(tw)|%xd(tx)|%xd(ty)|%xd(tz)|%xd(tA)|%xd(tB)|%xd(tC)|%xd(tD)|%xd(tE)|%xd(tF)>
+%Vl(title,41,53,-22,38,4)%Vf(c58ee6)
+%s%Lt
+%T(0,0,-,-,cancel)

@@ -1,0 +1,151 @@
+# Rockbox Theme Name: UImiz Revamped (HIDIZS AP80 Pro Max)
+# Platform: HIDIZS AP80 Pro Max (360x640)
+# Based on JGUlmiz for the HiBy R1 by jgoedde, and Ulmiz by Simon Rothen (rothen@gmx.net)
+# Licencing: CC-BY-SA 3.0
+# iconset taken from advaitapod theme vector files
+#
+# Version: 2.0-ap80pm
+# Date: 2026-10-01
+#
+# WPS File
+#
+# Additional Fonts
+%Fl(7,34-Ubuntu-Bold.fnt)
+%Fl(4,38-Ubuntu-Medium.fnt)
+%Fl(8,27-Ubuntu-Regular.fnt)
+%Fl(5,16-Ubuntu-Medium.fnt)
+%Fl(6,180-Ubuntu-Bold.fnt)
+#
+# Disable Status Bar
+%wd
+#
+%V(0,0,-,-,-)%VB
+%x(backdrop,wps_bg.bmp,0,0)
+#
+%V(0,0,-,-,-)
+# albumart, or big volume while the volume is being changed
+%?mv(1.5)<%Vd(volumen)|%Vd(albumart)>
+#
+### Touch Areas
+# status bar touch zones: clock = menu, visualizer (centre) = quick screen, battery = context menu
+%T(0,0,120,42,menu)
+%T(120,0,120,42,quickscreen)
+%T(240,0,-,42,contextmenu)
+%T(0,46,-,150,browse,long_press)
+%T(playlist,0,196,-,150,playlist,long_press)
+%T(infoscreen,0,46,-,300,none)
+#
+### VIEWPORTS
+# Visualizer  (centred; left / right peak levels)
+%xl(vz1l,vz1l.bmp,0,0)
+%xl(vz1d,vz1d.bmp,0,0)
+%V(162,21,5,10,-)
+%pL(0,0,5,10,vertical,image,vz1l,backdrop,vz1d)
+%xl(vz2l,vz2l.bmp,0,0)
+%xl(vz2d,vz2d.bmp,0,0)
+%V(170,16,5,15,-)
+%pR(0,0,5,15,vertical,image,vz2l,backdrop,vz2d)
+%xl(vz3l,vz3l.bmp,0,0)
+%xl(vz3d,vz3d.bmp,0,0)
+%V(178,11,5,20,-)
+%pL(0,0,5,20,vertical,image,vz3l,backdrop,vz3d)
+%xl(vz4l,vz4l.bmp,0,0)
+%xl(vz4d,vz4d.bmp,0,0)
+%V(186,15,5,16,-)
+%pR(0,0,5,16,vertical,image,vz4l,backdrop,vz4d)
+%xl(vz5l,vz5l.bmp,0,0)
+%xl(vz5d,vz5d.bmp,0,0)
+%V(194,19,5,12,-)
+%pL(0,0,5,12,vertical,image,vz5l,backdrop,vz5d)
+#
+# Clock  (left, 12 px from the edge like the battery on the right)
+%V(11,8,120,27,8)%Vf(ddd3e8)
+%al%?cf<%ck:%cM|%cl:%cM %cp>
+#
+# Battery  (percentage moves left and a purple bolt appears while the charger is connected)
+%?bp<%Vd(bchg)|%Vd(bnorm)>
+%Vl(bnorm,254,8,78,26,8)%Vf(ddd3e8)
+%ar%bl%%
+%Vl(bchg,240,8,78,26,8)%Vf(ddd3e8)
+%ar%bl%%
+%xl(z,bolt.bmp,0,0)
+%Vl(bchg,322,12,10,18,-)%Vf(c58ee6)
+%xd(z)
+# battery level: pastel purple fill inside the white outline (outline is in the backdrop)
+%xl(bf,batt_level.bmp,0,0)
+%xl(be,batt_empty.bmp,0,0)
+%V(340,16,6,14,-)
+%bl(0,0,6,14,vertical,image,bf,backdrop,be)
+#
+# Albumart
+%Vl(albumart,30,46,300,300,-)
+%Cl(0,0,300,300,c,c)
+%?C<%Cd>
+#
+# Volume Big (shown over the album art area while changing volume)
+%Vl(volumen,0,111,-,170,6)%Vf(ddd3e8)
+%ac%?if(%pv,<=,-1000)<%ss(0,4,%pv)|%?if(%pv,>,-100)<%?if(%pv,>=,0)<%ss(0,1,%pv)|%ss(0,2,%pv)>|%ss(0,3,%pv)>>
+#
+# Album
+%V(29,362,228,26,8)%Vf(d9cfe4)%Vb(31283c)
+%s%ac%?id<%id>
+#
+# Year
+%V(268,362,65,26,8)%Vf(2a2135)%Vb(c0b2d0)
+%ac%?iy<%ss(0,4,%iy)>
+#
+# Artist
+%V(21,402,318,33,7)%Vf(f6f1fb)%Vb(271f32)
+%s%ac%ia
+#
+# Title
+%V(21,447,318,36,4)%Vf(231b2c)%Vb(f0ecf6)
+%s%ac%?mp<|%it|%t(0.5)%it;%t(0.5)|%pc %>%>|%<%< %pc|%it>
+#
+# Progressbar (track is drawn in the backdrop, rockbox draws the purple border + fill)
+%V(0,498,-,29,-)%Vb(16111c)%Vf(c58ee6)
+%T(seek,0,0,-,-,progressbar)
+%pb(17,9,326,12,notouch)
+#
+# Time elapsed
+%V(17,527,90,26,8)%Vf(ddd3e8)
+%al%pc
+#
+# Time total
+%V(253,527,90,26,8)%Vf(ddd3e8)
+%ar%pt
+#
+# Playlist position
+%V(100,527,160,26,8)%Vf(ddd3e8)
+%ac%s%pp %Sx(of) %pe
+#
+# Shuffle  (frame a = off, b = on)
+%xl(s,shuffle.bmp,0,0,2)
+%V(8,571,52,52,-)
+%T(shuffle,0,0,-,-,shuffle)
+%?ps<%xd(sb)|%xd(sa)>
+#
+# Previous, Rewind
+%V(67,570,64,54,-)
+%T(0,0,-,-,rwd,repeat_press)
+%T(rr,0,0,-,-,wps_prev)
+#
+# Play, Pause, Stop  (frame a = stop, b = play, c = pause)
+%xl(p,play.bmp,0,0,3)
+%V(138,570,84,54,-)
+#Stop, Play, Pause, Fast Forward, Rewind
+%?mp<%xd(pa)|%xd(pc)|%xd(pb)|%xd(pc)|%xd(pc)>
+%T(0,0,-,-,stop,long_press)
+%T(play,0,0,-,-,play)
+#
+# Next, Forward
+%V(229,570,64,54,-)
+%T(0,0,-,-,ffwd,repeat_press)
+%T(ff,0,0,-,-,wps_next)
+#
+# Repeat mode  (a = off, b = all, c = one, d = shuffle, e = A-B)
+%xl(r,repeat.bmp,0,0,5)
+%V(300,571,52,52,-)
+%T(repeat,0,0,-,-,repmode)
+%T(0,0,-,-,setting_set,repeat,off,long_press)
+%?mm<%xd(ra)|%xd(rb)|%xd(rc)|%xd(rd)|%xd(re)>
